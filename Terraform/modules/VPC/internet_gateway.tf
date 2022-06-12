@@ -1,4 +1,4 @@
-resource "aws_internet_gateway" "Prj17_ig" {
+resource "aws_internet_gateway" "ig" {
   vpc_id = aws_vpc.main.id
 
   tags = merge(

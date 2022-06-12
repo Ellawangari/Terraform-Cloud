@@ -51,5 +51,5 @@ variable "name" {
 
 }
 variable "environment" {
-  default = "true"
+  default = "DEV"
 }
