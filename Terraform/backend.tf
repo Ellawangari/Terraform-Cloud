@@ -3,7 +3,7 @@ terraform {
     organization = "Ella"
 
     workspaces {
-      name = "Terraform-Cloud"
+      name = "TerraformCloud-prj19"
     }
   }
 }
