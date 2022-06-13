@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform-state" {
-  bucket = "pbl18"
+  bucket = "pbl19"
   force_destroy = true
 }
 resource "aws_s3_bucket_versioning" "version" {
@@ -17,8 +17,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "first" {
   }
 }
 
-resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "terraform-locks"
+resource "aws_dynamodb_table" "terraform_lock19" {
+  name         = "terraform-locks19"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
   attribute {
@@ -28,7 +28,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
 }
 
 
-# creating VPC
+# # creating VPC
 module "VPC" {
   source                              = "./modules/VPC"
   region                              = var.region
@@ -65,9 +65,9 @@ module "security" {
 
 module "AutoScaling" {
   source            = "./modules/Autoscaling"
-  ami-web           = var.ami
-  ami-bastion       = var.ami
-  ami-nginx         = var.ami
+  ami-web           = var.ami-web
+  ami-bastion       = var.ami-bastion
+  ami-nginx         = var.ami-nginx
   desired_capacity  = 2
   min_size          = 2
   max_size          = 2

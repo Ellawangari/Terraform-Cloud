@@ -14,7 +14,7 @@ resource "aws_route_table" "private-rtb" {
 resource "aws_route" "private-rtb-route" {
   route_table_id         = aws_route_table.private-rtb.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_nat_gateway.Prj17_nat.id
+  gateway_id             = aws_nat_gateway.nat.id
 }
 
 
@@ -43,7 +43,7 @@ resource "aws_route_table" "public-rtb" {
 resource "aws_route" "public-rtb-route" {
   route_table_id         = aws_route_table.public-rtb.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_internet_gateway.Prj17_ig.id
+  gateway_id             = aws_internet_gateway.ig.id
 }
 
 # associate all public subnets to the public route table

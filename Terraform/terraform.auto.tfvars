@@ -16,16 +16,22 @@ preferred_number_of_private_subnets = 4
 
 environment = "production"
 
-ami = "ami-0b0af3577fe5e3532"
+ami-web = "ami-0fc3b56b6e529833f"
+
+ami-bastion = "ami-046ac4f77de1ad1b8"
+
+ami-nginx =   "ami-0465893bccbd51267"
+
+ami-sonar = "ami-0c8f3ce0276b737f8"
 
 keypair = "redhatkey"
 
 
 account_no = "081243314443"
 
-db-username = "admin"
+master-username = "admin"
 
-db-password = "admin12345"
+master-password = "admin12345"
 
 tags = {
   Enviroment      = "Production"

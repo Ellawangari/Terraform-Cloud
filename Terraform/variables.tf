@@ -46,17 +46,30 @@ variable "environment" {
 }
 
 
-variable "ami" {
+variable "ami-web" {
   type        = string
   description = "AMI ID for the launch template"
 }
 
+variable "ami-bastion" {
+  type        = string
+  description = "AMI ID for the launch template"
+}
+
+variable "ami-nginx" {
+  type        = string
+  description = "AMI ID for the launch template"
+}
 
 variable "keypair" {
   type        = string
   description = "key pair for the instances"
 }
 
+variable "ami-sonar" {
+  type        = string
+  description = "AMI ID for the launch template"
+}
 
 variable "tags" {
   description = "A mapping of tags to assign to all resources."
