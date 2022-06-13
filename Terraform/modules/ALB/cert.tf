@@ -19,7 +19,7 @@ data "aws_route53_zone" "ella" {
 # selecting validation method
 resource "aws_route53_record" "ella" {
   for_each = {
-    for dvo in aws_acm_certificate.somdev.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.ella.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
@@ -35,7 +35,7 @@ resource "aws_route53_record" "ella" {
 }
 
 # validate the certificate through DNS method
-resource "aws_acm_certificate_validation" "somdev" {
+resource "aws_acm_certificate_validation" "ella" {
   timeouts {
     create = "5m"
   }
