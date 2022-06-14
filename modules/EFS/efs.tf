@@ -21,13 +21,13 @@ EOF
 # create key alias
 resource "aws_kms_alias" "alias" {
   name          = "alias/kms"
-  target_key_id = aws_kms_key.Ella-kms.key_id
+  target_key_id = aws_kms_key.Terraform-cloud-kms.key_id
 }
 
 # create Elastic file system
 resource "aws_efs_file_system" "ACS-efs" {
   encrypted  = true
-  kms_key_id = aws_kms_key.Ella-kms.arn
+  kms_key_id = aws_kms_key.Terraform-cloud-kms.arn
 
 tags = merge(
     var.tags,

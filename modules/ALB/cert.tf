@@ -50,8 +50,8 @@ resource "aws_route53_record" "tooling" {
   type    = "A"
 
   alias {
-    name                   = aws_lb.ext-alb.dns_name
-    zone_id                = aws_lb.ext-alb.zone_id
+    name                   = aws_lb.external-alb.dns_name
+    zone_id                = aws_lb.external-alb.zone_id
     evaluate_target_health = true
   }
 }
@@ -63,8 +63,8 @@ resource "aws_route53_record" "wordpress" {
   type    = "A"
 
   alias {
-    name                   = aws_lb.ext-alb.dns_name
-    zone_id                = aws_lb.ext-alb.zone_id
+    name                   = aws_lb.external-alb.dns_name
+    zone_id                = aws_lb.external-alb.zone_id
     evaluate_target_health = true
   }
 }
