@@ -1,5 +1,5 @@
 # create key from key management system
-resource "aws_kms_key" "Ella-kms" {
+resource "aws_kms_key" "Terraform-cloud-kms" {
   description = "KMS key "
   policy      = <<EOF
   {

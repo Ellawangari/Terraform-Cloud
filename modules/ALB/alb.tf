@@ -2,7 +2,7 @@
 #External Load balancer for reverse proxy nginx
 #---------------------------------
 
-resource "aws_lb" "ext-alb" {
+resource "aws_lb" "external-alb" {
   name            = var.name
   internal        = false
   security_groups = [var.public-sg]
@@ -58,7 +58,7 @@ resource "aws_lb_listener" "nginx-listner" {
 #Internal Load Balancers for webservers
 #---------------------------------
 
-resource "aws_lb" "ialb" {
+resource "aws_lb" "internalalb" {
   name     = "ialb"
   internal = true
 
@@ -113,7 +113,7 @@ resource "aws_lb_target_group" "tooling-tgt" {
     unhealthy_threshold = 2
   }
 
-  name        = "david-tooling-tgt"
+  name        = "tooling-tgt"
   port        = 443
   protocol    = "HTTPS"
   target_type = "instance"
