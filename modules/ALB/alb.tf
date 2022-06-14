@@ -3,7 +3,7 @@
 #---------------------------------
 
 resource "aws_lb" "external-alb" {
-  name            = var.name
+  name            = "externalalb"
   internal        = false
   security_groups = [var.public-sg]
 
@@ -59,7 +59,7 @@ resource "aws_lb_listener" "nginx-listner" {
 #---------------------------------
 
 resource "aws_lb" "internalalb" {
-  name     = "ialb"
+  name     = "internalalb"
   internal = true
 
   security_groups = [var.private-sg]

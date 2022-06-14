@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "terraform-cloud-bucket"
+  bucket = "terraform-cloud-bucket1"
 
   versioning {
     enabled = true
@@ -16,7 +16,7 @@ resource "aws_s3_bucket" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "terraform-cloud-locks"
+  name         = "terraform-cloud-locks1"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
   attribute {
