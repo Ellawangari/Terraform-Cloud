@@ -57,7 +57,7 @@ variable "environment" {
 }
 
 variable "max_subnets" {
-  type    = string
-  default = "ACS"
+  type    = number
+  default = 200
 
 }
