@@ -18,7 +18,9 @@ variable "enable_dns_hostnames" {
 variable "enable_classiclink" {
   type = bool
 }
-
+variable "enable_classiclink_dns_support" {
+  type = bool
+}
 
 variable "preferred_number_of_public_subnets" {
   type = number
@@ -52,4 +54,10 @@ variable "name" {
 }
 variable "environment" {
   default = "DEV"
+}
+
+variable "max_subnets" {
+  type    = string
+  default = "ACS"
+
 }
