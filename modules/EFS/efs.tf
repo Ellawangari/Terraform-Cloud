@@ -1,5 +1,4 @@
-#  create key from key management system
-resource "aws_kms_key" "ACS-kms" {
+resource "aws_kms_key" "terraformcloud19-kms" {
   description = "KMS key "
   policy      = <<EOF
   {
@@ -9,7 +8,7 @@ resource "aws_kms_key" "ACS-kms" {
     {
       "Sid": "Enable IAM User Permissions",
       "Effect": "Allow",
-      "Principal": { "AWS": "arn:aws:iam::${var.account_no}:user/somex-terraform" },
+      "Principal": { "AWS": "arn:aws:iam::${var.account_no}:user/terraform" },
       "Action": "kms:*",
       "Resource": "*"
     }
@@ -21,22 +20,21 @@ EOF
 # create key alias
 resource "aws_kms_alias" "alias" {
   name          = "alias/kms"
-  target_key_id = aws_kms_key.ACS-kms.key_id
+  target_key_id = aws_kms_key.terraformcloud19-kms.key_id
 }
 
 # create Elastic file system
 resource "aws_efs_file_system" "ACS-efs" {
   encrypted  = true
-  kms_key_id = aws_kms_key.ACS-kms.arn
+  kms_key_id = aws_kms_key.terraformcloud19-kms.arn
 
   tags = merge(
     var.tags,
     {
-      Name = "ACS-file-system"
+      Name = "JAY-efs"
     },
   )
 }
-
 
 # set first mount target for the EFS 
 resource "aws_efs_mount_target" "subnet-1" {
@@ -45,14 +43,12 @@ resource "aws_efs_mount_target" "subnet-1" {
   security_groups = var.efs-sg
 }
 
-
 # set second mount target for the EFS 
 resource "aws_efs_mount_target" "subnet-2" {
   file_system_id  = aws_efs_file_system.ACS-efs.id
   subnet_id       = var.efs-subnet-2
-  security_groups = var.efs-sg
+  security_groups =  var.efs-sg
 }
-
 
 # create access point for wordpress
 resource "aws_efs_access_point" "wordpress" {
@@ -75,7 +71,6 @@ resource "aws_efs_access_point" "wordpress" {
   }
 
 }
-
 
 # create access point for tooling
 resource "aws_efs_access_point" "tooling" {
