@@ -25,7 +25,35 @@ resource "aws_security_group_rule" "inbound-ssh-bastion" {
   to_port           = 22
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.ACS["bastion-sg"].id
+  source_security_group_id = aws_security_group.ACS["bastion-sg"].id
+  security_group_id = aws_security_group.ACS["compute-sg"].id
+}
+
+resource "aws_security_group_rule" "inbound-port-artifcatory" {
+  from_port         = 8081
+  protocol          = "tcp"
+  to_port           = 8081
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.ACS["compute-sg"].id
+}
+
+resource "aws_security_group_rule" "inbound-port-jenkins" {
+  from_port         = 8080
+  protocol          = "tcp"
+  to_port           = 8080
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.ACS["compute-sg"].id
+}
+
+resource "aws_security_group_rule" "inbound-port-sonarqube" {
+  from_port         = 9000
+  protocol          = "tcp"
+  to_port           = 9000
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.ACS["ext-alb-sg"].id
 }
 
 

@@ -40,5 +40,9 @@ locals {
 
 
     }
+
+    compute-sg = {
+      name        = "compute-sg"
+      description = "compute security group"
   }
 }
