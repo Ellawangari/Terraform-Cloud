@@ -61,3 +61,7 @@ variable "max_subnets" {
   default = 200
 
 }
+variable "account_no" {
+  type        = string
+  description = "account number for the aws"
+} 
