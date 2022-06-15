@@ -19,15 +19,15 @@ resource "aws_security_group_rule" "inbound-alb-https" {
 }
 
 # security group rule for bastion to allow assh access fro your local machine
-resource "aws_security_group_rule" "inbound-ssh-bastion" {
-  from_port         = 22
-  protocol          = "tcp"
-  to_port           = 22
-  type              = "ingress"
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = aws_security_group.ACS["bastion-sg"].id
-  security_group_id = aws_security_group.ACS["compute-sg"].id
-}
+# resource "aws_security_group_rule" "inbound-ssh-bastion" {
+#   from_port         = 22
+#   protocol          = "tcp"
+#   to_port           = 22
+#   type              = "ingress"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = aws_security_group.ACS["bastion-sg"].id
+#   security_group_id = aws_security_group.ACS["compute-sg"].id
+# }
 
 resource "aws_security_group_rule" "inbound-port-artifcatory" {
   from_port         = 8081
