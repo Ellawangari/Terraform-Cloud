@@ -2,11 +2,11 @@
 
 resource "aws_autoscaling_group" "wordpress-asg" {
   name                      = "wordpress-asg"
-  max_size                  = var.max_size
-  min_size                  = var.min_size
+  max_size                  = 1
+  min_size                  = 1
   health_check_grace_period = 300
   health_check_type         = "ELB"
-  desired_capacity          = var.desired_capacity
+  desired_capacity          = 1
   vpc_zone_identifier = var.private_subnets
 
 
@@ -34,11 +34,11 @@ resource "aws_autoscaling_group" "wordpress-asg" {
 
 resource "aws_autoscaling_group" "tooling-asg" {
   name                      = "tooling-asg"
-  max_size                  = var.max_size
-  min_size                  = var.min_size
+  max_size                  = 1
+  min_size                  = 1
   health_check_grace_period = 300
   health_check_type         = "ELB"
-  desired_capacity          = var.desired_capacity
+  desired_capacity          = 1
   vpc_zone_identifier = var.private_subnets
 
   launch_template {

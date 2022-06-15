@@ -39,8 +39,8 @@ resource "random_shuffle" "az_list" {
 
 resource "aws_autoscaling_group" "bastion-asg" {
   name                      = "bastion-asg"
-  max_size                  = var.max_size
-  min_size                  = var.min_size
+  max_size                  = 1
+  min_size                  = 1
   health_check_grace_period = 300
   health_check_type         = "ELB"
   desired_capacity          = var.desired_capacity
@@ -68,7 +68,7 @@ resource "aws_autoscaling_group" "bastion-asg" {
 
 resource "aws_autoscaling_group" "nginx-asg" {
   name                      = "nginx-asg"
-  max_size                  = 2
+  max_size                  = 1
   min_size                  = 1
   health_check_grace_period = 300
   health_check_type         = "ELB"
