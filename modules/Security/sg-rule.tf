@@ -1,3 +1,33 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Ellawangari 
+somex6
+/
+terraform-cloud
+Public
+Code
+Issues
+Pull requests
+1
+Actions
+Projects
+Wiki
+Security
+Insights
+terraform-cloud/modules/Security/sg-rule.tf
+@somex6
+somex6 Add files via upload
+Latest commit c11c6dc on May 9
+ History
+ 1 contributor
+157 lines (127 sloc)  5.37 KB
+
+
 # security group for alb, to allow acess from any where on port 80 for http traffic
 resource "aws_security_group_rule" "inbound-alb-http" {
   from_port         = 80
@@ -7,7 +37,6 @@ resource "aws_security_group_rule" "inbound-alb-http" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.ACS["ext-alb-sg"].id
 }
- 
 
 resource "aws_security_group_rule" "inbound-alb-https" {
   from_port         = 443
@@ -18,15 +47,15 @@ resource "aws_security_group_rule" "inbound-alb-https" {
   security_group_id = aws_security_group.ACS["ext-alb-sg"].id
 }
 
-# security group rule for bastion to allow assh access fro your local machine
-resource "aws_security_group_rule" "inbound-ssh-bastion" {
-  from_port         = 22
-  protocol          = "tcp"
-  to_port           = 22
-  type              = "ingress"
-  cidr_blocks       = ["0.0.0.0/0"]
+
+# security group for compute module
+resource "aws_security_group_rule" "inbound-bastion-ssh-compute" {
+  from_port                = 22
+  protocol                 = "tcp"
+  to_port                  = 22
+  type                     = "ingress"
   source_security_group_id = aws_security_group.ACS["bastion-sg"].id
-  security_group_id = aws_security_group.ACS["compute-sg"].id
+  security_group_id        = aws_security_group.ACS["compute-sg"].id
 }
 
 resource "aws_security_group_rule" "inbound-port-artifcatory" {
@@ -54,6 +83,16 @@ resource "aws_security_group_rule" "inbound-port-sonarqube" {
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.ACS["ext-alb-sg"].id
+}
+
+# security group rule for bastion to allow assh access fro your local machine
+resource "aws_security_group_rule" "inbound-ssh-bastion" {
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.ACS["bastion-sg"].id
 }
 
 
@@ -142,3 +181,7 @@ resource "aws_security_group_rule" "inbound-mysql-webserver" {
   source_security_group_id = aws_security_group.ACS["webserver-sg"].id
   security_group_id        = aws_security_group.ACS["datalayer-sg"].id
 }
+
+
+
+
