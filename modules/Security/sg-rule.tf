@@ -1,31 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@Ellawangari 
-somex6
-/
-terraform-cloud
-Public
-Code
-Issues
-Pull requests
-1
-Actions
-Projects
-Wiki
-Security
-Insights
-terraform-cloud/modules/Security/sg-rule.tf
-@somex6
-somex6 Add files via upload
-Latest commit c11c6dc on May 9
- History
- 1 contributor
-157 lines (127 sloc)  5.37 KB
+
 
 
 # security group for alb, to allow acess from any where on port 80 for http traffic
