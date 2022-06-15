@@ -1,6 +1,7 @@
 resource "aws_kms_key" "ACS-kms" {
   description = "KMS key "
   policy      = <<EOF
+  {
   "Id": "key-consolepolicy-3",
     "Version": "2012-10-17",
     "Statement": [
