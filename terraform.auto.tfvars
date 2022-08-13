@@ -27,17 +27,17 @@ ami-sonar = "ami-0c8f3ce0276b737f8"
 keypair = "redhatkey"
 
 
-account_no = "081243314443"
+account_no = ""
 
-master-username = "admin"
+master-username = ""
 
-master-password = "admin12345"
+master-password = ""
 
 tags = {
   Enviroment      = "Production"
-  Owner-Email     = "elamaina8@gmail.com"
+  Owner-Email     = ""
   Managed-By      = "Terraform"
-  Billing-Account = "081243314443"
+  Billing-Account = ""
 
 
 }
